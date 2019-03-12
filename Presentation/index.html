@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DVT Grads Workshop :: Intro to angular</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/img/dvt.jpg" type="image/x-icon">
+</head>
+<body>
+  <textarea id="source">
+class: center, middle
+
+# Getting started with
+  <img src="assets/img/angular-3.svg" style="width: 100%" alt="Angular Logo">
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+---
+
+# Prerequisites
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - Some knowledge of:
+    - HTML
+    - CSS
+    - JavaScript
+
+  <img style="width: 100%" src="assets/img/HTML5_CSS_JavaScript.png" alt="HTML 5, CSS and JS Logo">
+---
+
+# The quest for rich &#128176; UX
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - <b>Not so rich UX</b> &#128078;:
+    - Click-Wait-and-Refresh-Cycle in traditional Multi-Page Web applications.
+  - <b>Rich UX</b> &#128077;:
+    - Absence of Click-Wait-and-Refresh-Cycle.
+    - Retrieve and present data from the server without a whole page refresh.
+  - How was this done in the good ol' days?
+    - <b>Ajax</b>:
+      - Techniques using javascript on the client side to create asynchronous web applications.
+      - Data is sent and retrieved from the server asynchronously without interfering with the display and behavior of the existing page.
+  - How is this done in the good current days?
+    - Still Ajax...but that doesn't give us excessively rich UX.
+    - For that...we use <b>Single Page Applications</b>(SPA).
+---
+
+# Single Page Applications
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - Dynamically re-render their content by requesting partial content from the server.
+    - Index page is retrieved one with the initial request.
+    - No page reloads.
+    - Data(not HTML) is exchanged between the client and the server.
+
+  <img src="assets/img/SPA-Diagram.jpg" alt="SPA Diagram">
+---
+
+# Multi Page Applications
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - No dynamic content re-rendering
+    - HTML pages are fetched on every request.
+    - Burdened with page reloads.
+
+  <img src="assets/img/Traditional.png" style="width: 100%" alt="Traditional web application diagram">
+---
+
+# SPA and MPA showdown
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+  1. Search Engine Optimization:
+    - Easier on MPA, search engines can crawl these quite easily.
+    - Not so easy on a SPA...although there are tools for this.
+  2. Browser Support:
+    - SPA work well on modern browsers...older browser them polyfills.
+    - It's easier to develop MPAs for older browsers without polyfills.
+  3. Speeeed:
+    - Single Page Applications:
+      - Use less resources.
+    - Multi Page Applications:
+      - Resource hungry...resources are often fetched on every request.
+
+<img src="assets/img/spa_vs_mpa.jpeg" style="width: 40%; position: absolute; left: 30%;" alt="Spa vs Mpa">
+---
+
+# SPA Libraries and Frameworks
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  <img src="assets/img/js-frameworks.jpg" alt="SPA Frameworks">
+
+  <h2 style="text-align: center">We'll have a look at Angular</h2>
+---
+
+# What is Angular
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - An opinionated JS framework for building client side applications.
+    - Suggests how things should be done.
+  - Maintained by the good lads at Google.
+  - Built with TypeScript.
+  - Tools included:
+    - A router.
+    - A forms module.
+    - An HttpClient and many more tools.
+
+  <img style="position: absolute; left: 35%" src="assets/img/angular.png" alt="Angular logo">
+---
+
+# Building Blocks
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - Components
+  - Data Binding
+  - Directives
+  - Pipes
+  - Modules
+  - Services
+  - Dependency Injection
+  <img src="assets/img/blocks.png" style="width: 80%" alt="Lego Blocks">
+---
+
+# Tools ecosystem
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  #### Some tools that aid in Angular application development
+
+  - [Angular CLI](https://cli.angular.io/) - A command line tool that helps create and manage angular apps.
+  - [Angular Universal](https://angular.io/guide/universal) - Angular's take on server-side-rendering.
+  - [Angular Console](https://angularconsole.com/) - A GUI alternative for Angular CLI.
+  - [Angular Material](https://material.angular.io/) - Material Design components for Angular.
+
+  <img src="assets/img/tools.jpg" style=" position: absolute; left: 20%; width: 55%" alt="Tools">
+---
+
+# Angular CLI :: Brief Look
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - An overview of what the tool is capable of:
+    - ```bash
+      ng help
+      ```
+
+<img src="assets/img/ng_help.PNG" style="width: 100%;">
+---
+
+# Angular CLI :: `ng new` Crash Course
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - Used when creating a new project
+
+<img src="assets/img/ng_new.PNG" style="width: 100%">
+---
+
+# Our first app
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+  - Prerequisites:
+    - Node.JS
+    - A text editor
+  - Angular CLI:
+    - A small tool that helps create and manage angular projects.
+    - Installing the Angular CLI:
+  ```bash
+  npm install -g @angular/cli
+  ```
+  - Creating a new app:
+  ```bash
+  ng new awesome-app --skip-tests
+  ```
+  - Running our new app:
+  ```bash
+  cd awesome-app
+  ng serve --open
+  ```
+  OR
+  ```bash
+  cd awesome-app
+  npm start
+  ```
+---
+
+# Components
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - Building blocks for Angular apps.
+  - Encapsulate HTML templates, data and logic that can be arranged together to build an appliation.
+  - Component Architecture:
+
+  <img src="assets/img/component.png" alt="Component Architecture">
+
+  - Angular also supports Single-File-Components.
+    - Styles, view definition and view related logic are in one file.
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - Component files overview
+  - Creating a new Component
+  - Lifecycle hooks
+  - Interpolation:
+    - In tags.
+    - In attributes
+  - Communiaction between Components
+    - Inputs
+    - Outputs
+
+  <img src="assets/img/cdk.png" style="position: absolute; left: 40%;">
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Component files overview
+  - **Typescript file** - houses Component Logic
+
+  <img src="assets/img/component_typescript.PNG"  alt="Component TypeScript">
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Component files overview
+  - **Html file** - houses Component markup
+    - Supports data-binding and other concepts unique to angular
+    - Can only be properly interpreted by Angular
+
+  <img src="assets/img/component_html.PNG" alt="Component TypeScript">
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Component files overview
+  - **Stylesheet** - houses css styles
+    - Component styles are scoped only to the component
+  - Can also use pre-processed stylesheets
+    - override component schematic in angular.json
+    - specify `--style` flag when creating a new app
+
+  <img src="assets/img/component_stylesheet.PNG"  alt="Component TypeScript">
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Component files overview
+  - Single File Components - **View**, **Styles** and **Logic** are in one file.
+
+  <img src="assets/img/single_file_component.PNG" style="width: 60%;" alt="Component TypeScript">
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Creating a new Component
+  - Use Angular CLI
+  - Create a Typeahead component
+
+  ```bash
+  ng generate component custom-typeahead
+  ```
+  OR
+  ```bash
+  ng g c custom-typeahead
+  ```
+
+<img src="assets/img/generate_component_output.PNG">
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Typeahead Component
+  - Defining the template
+    - `custom-typeahead.component.html`
+
+  ```html
+  <h1>Custom Typeahead</h1>
+
+  <input type=text list=browsers>
+  <datalist id=browsers>
+    <option value="Firefox">
+    <option value="IE">
+    <option value="Chrome">
+    <option value="Opera">
+    <option value="Safari">
+  </datalist>
+  ```
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Typeahead Component
+  - Defining the stylesheet
+    - `custom-typeahead.component.css`
+
+  ```css
+  @import url('https://fonts.googleapis.com/css?family=Lato');
+  :host { text-align: center; font-family: 'Lato', sans-serif; }
+  input:focus { background-color: #fff; }
+  input::-webkit-calendar-picker-indicator { display: none; }
+  input {
+    background-color: #f1f5f8;
+    border: 1px solid #dae1e7;
+    border-radius: .25rem;
+    line-height: 1.5;
+    outline: none;
+    padding: .5rem .8rem;
+    transition: all .1s ease-in;
+    width: 100%;
+  }
+  ```
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Typeahead Component - App Component changes
+    - `app.component.html` changes
+
+  ```html
+  <div>
+    <app-custom-typeahead></app-custom-typeahead>
+  </div>
+  ```
+
+  - `app.component.css` changes
+
+```css
+div {
+  display: flex;
+  justify-content: center;
+}
+```
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Typeahead Component
+    - Result
+
+  <img src="assets/img/typeahead_component.png" style="width: 100%">
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Lifecycle hooks
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Interpolation
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Communiaction between components
+---
+
+# Data Binding
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - Content
+---
+
+# Directives
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - Content
+---
+
+# Pipes
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - Content
+---
+
+# Modules
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - Content
+---
+
+# Services
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - Content
+---
+
+# Dependency Injection
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - Content
+---
+
+# Lab Time
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  <h1 style="position: absolute; top: 45%; left: 25%;">Real World-ish application!</h1>
+---
+  </textarea>
+  <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+  </script>
+  <script>
+    var slideshow = remark.create();
+  </script>
+</body>
+</html>

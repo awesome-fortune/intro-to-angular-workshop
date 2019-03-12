@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+:host {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+
+input:focus {
+  background-color: #fff;
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+input {
+  background-color: #f1f5f8;
+  border: 1px solid #dae1e7;
+  border-radius: .25rem;
+  line-height: 1.5;
+  outline: none;
+  padding: .5rem .8rem;
+  transition: all .1s ease-in;
+  width: 100%;
+}

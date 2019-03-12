@@ -1,0 +1,20 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top:2rem;
+  padding-bottom: 2rem;
+  transform: translate3d(0px, 0px, 0px);
+  box-shadow: 10px 0 40px -4px $shadow-gray;
+
+  a {
+    color: $icon-accent;
+    padding: 15px 25px;
+
+    &:hover {
+      color: $app-accent;
+      border-right: 3px solid $app-accent;
+    }
+  }
+
+}
