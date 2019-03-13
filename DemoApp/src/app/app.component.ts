@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'DemoApp';
+  browsers = ['DemoApp', 'Firefox', 'IE', 'Chrome', 'Opera', 'Safari', 'Unknown Browser'];
+  randomWord = 'nothing yet';
+  public randomWordcallback(word: string): void {
+    this.randomWord = word;
+  }
 }

@@ -1,0 +1,8 @@
+<h1>Custom Typeahead With Comms</h1>
+
+<input id="browser-input" #t type="text" list="input-browsers">
+<datalist id="input-browsers">
+  <option *ngFor="let browser of browserNames" value="{{ browser }}">
+</datalist>
+
+<button (click)="generateRandomWord()">Generate</button>

@@ -1,4 +1,10 @@
 
-<div>
-  <app-custom-typeahead></app-custom-typeahead>
-</div>
+<app-custom-typeahead></app-custom-typeahead>
+
+<hr>
+
+<app-custom-typeahead-with-comms [browserList]="browsers" (onRandomWordChange)="randomWordcallback($event)"></app-custom-typeahead-with-comms>
+
+<p>
+  Random Word: {{ randomWord }}
+</p>

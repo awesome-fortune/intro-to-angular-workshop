@@ -1,6 +1,8 @@
 :host {
   width: 25%;
   align-self: center;
+  display: flex;
+  flex-flow: column;
 }
 
 input:focus {
@@ -12,12 +14,14 @@ input::-webkit-calendar-picker-indicator {
 }
 
 input {
+  align-self: center;
   background-color: #f1f5f8;
   border: 1px solid #dae1e7;
   border-radius: .25rem;
   line-height: 1.5;
   outline: none;
   padding: .5rem .8rem;
+  text-align: center;
   transition: all .1s ease-in;
   width: 100%;
 }

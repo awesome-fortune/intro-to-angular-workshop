@@ -13,8 +13,10 @@
 class: center, middle
 
 # Getting started with
-  <img src="assets/img/angular-3.svg" style="width: 100%" alt="Angular Logo">
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+  <img src="assets/img/angular-3.svg" style="width: 100%" alt="Angular Logo">
+
+  ### Workshop
 ---
 
 # Prerequisites
@@ -31,18 +33,18 @@ class: center, middle
 # The quest for rich &#128176; UX
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  - <b>Not so rich UX</b> &#128078;:
+  - **Not so rich UX** &#128078;:
     - Click-Wait-and-Refresh-Cycle in traditional Multi-Page Web applications.
-  - <b>Rich UX</b> &#128077;:
+  - **Rich UX** &#128077;:
     - Absence of Click-Wait-and-Refresh-Cycle.
     - Retrieve and present data from the server without a whole page refresh.
   - How was this done in the good ol' days?
-    - <b>Ajax</b>:
+    - **Ajax**:
       - Techniques using javascript on the client side to create asynchronous web applications.
       - Data is sent and retrieved from the server asynchronously without interfering with the display and behavior of the existing page.
   - How is this done in the good current days?
     - Still Ajax...but that doesn't give us excessively rich UX.
-    - For that...we use <b>Single Page Applications</b>(SPA).
+    - For that...we use **Single Page Applications**(SPA).
 ---
 
 # Single Page Applications
@@ -196,14 +198,13 @@ class: center, middle
 
   - Component files overview
   - Creating a new Component
-  - Lifecycle hooks
-  - Interpolation:
-    - In tags.
-    - In attributes
+  - Component Lifecycle
   - Communiaction between Components
     - Inputs
     - Outputs
-
+  - Interpolation:
+    - In tags.
+    - In attributes
   <img src="assets/img/cdk.png" style="position: absolute; left: 40%;">
 ---
 
@@ -277,8 +278,8 @@ class: center, middle
   ```html
   <h1>Custom Typeahead</h1>
 
-  <input type=text list=browsers>
-  <datalist id=browsers>
+  <input type="text" list="browsers">
+  <datalist id="browsers">
     <option value="Firefox">
     <option value="IE">
     <option value="Chrome">
@@ -296,19 +297,17 @@ class: center, middle
     - `custom-typeahead.component.css`
 
   ```css
-  @import url('https://fonts.googleapis.com/css?family=Lato');
-  :host { text-align: center; font-family: 'Lato', sans-serif; }
+  :host { width: 25%; align-self: center; }
   input:focus { background-color: #fff; }
   input::-webkit-calendar-picker-indicator { display: none; }
   input {
-    background-color: #f1f5f8;
-    border: 1px solid #dae1e7;
-    border-radius: .25rem;
-    line-height: 1.5;
-    outline: none;
-    padding: .5rem .8rem;
-    transition: all .1s ease-in;
-    width: 100%;
+      background-color: #f1f5f8;
+      border: 1px solid #dae1e7;
+      border-radius: .25rem;
+      line-height: 1.5;
+      outline: none;
+      padding: .5rem .8rem;
+      transition: all .1s ease-in;
   }
   ```
 ---
@@ -317,29 +316,31 @@ class: center, middle
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
   ### Typeahead Component - App Component changes
-    - `app.component.html` changes
+  - `app.component.html`
 
   ```html
-  <div>
-    <app-custom-typeahead></app-custom-typeahead>
-  </div>
+  <app-custom-typeahead></app-custom-typeahead>
   ```
 
-  - `app.component.css` changes
+  - `app.component.css`
 
-```css
-div {
-  display: flex;
-  justify-content: center;
-}
-```
+  ```css
+  @import url('https://fonts.googleapis.com/css?family=Lato');
+
+  :host {
+      display: flex;
+      flex-flow: column;
+      text-align: center;
+      font-family: 'Lato', sans-serif;
+  }
+  ```
 ---
 
 # Components :: Deep Dive
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
   ### Typeahead Component
-    - Result
+  - Result
 
   <img src="assets/img/typeahead_component.png" style="width: 100%">
 ---
@@ -347,7 +348,26 @@ div {
 # Components :: Deep Dive
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  ### Lifecycle hooks
+  ### Component Lifecycle
+
+  - Component instances have a lifecycle as Angular creates, updates, and destroys them.
+  - Developers can tap into key moments in that lifecycle by implementing lifecycle hooks.
+  - Lifeyle hooks:
+    - `ngOnChanges()`
+    - `ngOnInit()`
+    - `ngDoCheck()`
+    - `ngAfterContentInit()`
+    - `ngAfterContentChecked()`
+    - `ngAfterViewInit()`
+    - `ngOnDestroy()`
+
+  <img src="assets/img/hooks.jpg" style="width: 30%; position: absolute; right: 20%; top: 50%">
+---
+
+# Data Binding
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - Content
 ---
 
 # Components :: Deep Dive
@@ -360,12 +380,6 @@ div {
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
   ### Communiaction between components
----
-
-# Data Binding
-  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
-
-  - Content
 ---
 
 # Directives
