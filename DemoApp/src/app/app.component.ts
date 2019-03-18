@@ -8,6 +8,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 export class AppComponent {
   browsers = ['DemoApp', 'Firefox', 'IE', 'Chrome', 'Opera', 'Safari', 'Unknown Browser'];
   word = null;
+  customTextColor = 'orange';
   public wordChangeCallback(word: string): void {
     this.word = word;
   }

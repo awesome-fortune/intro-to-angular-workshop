@@ -543,6 +543,104 @@ class: center, middle
 # Directives
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
+  - Used to attatch custom behavior to DOM elements
+  - Types of directives:
+    - *Component* - directive with a template.
+    - *Attribute Directive* - change the appearance or behavior of an element, component, or another directive.
+    - *Structural Directive* - change the DOM layout by adding and removing DOM elements
+  - Create directive with `ng generate directive directiveName`
+  - Directives must be declared in `Angular Modules` in the same manner as components.
+  - Pass data to directive with `@Input data binding`
+  - Get reference to element that directive is applied to with `ElementRef`
+  - Respond to events with `@HostListener()`
+  - Also respond to lifeycle events like components.
+---
+
+# Directives
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Building an attribute directive
+
+  - Directive that does some things to text :)
+    - `ng generate directive directives/TextNinja`
+
+```Typescript
+import { Directive } from '@angular/core';
+
+@Directive({
+  selector: '[appTextNinja]'
+})
+export class TextNinjaDirective {
+  constructor() { }
+}
+```
+```html
+<!-- app.component.html -->
+<p appTextNinja>Some text that needs ninjarism</p>
+```
+---
+
+# Directives
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Building an attribute directive
+
+  - Responding to events with `@HostListener()`
+```Typescript
+import { ElementRef, HostListener, Renderer2 } from '@angular/core';
+... // Directive Decorator collapsed for brevity
+export class TextNinjaDirective {
+      @HostListener('mouseenter') onMouseEnter() {
+        this.textTransform('uppercase');
+      }
+
+      @HostListener('mouseleave') onmouseleave() {
+        this.textTransform('none');
+      }
+
+      constructor(private el: ElementRef, private renderer: Renderer2) { }
+
+      private textTransform(transform: string) {
+        this.renderer.setStyle(this.el.nativeElement, 'text-transform', transform);
+      }
+}
+```
+---
+
+# Directives
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Building an attribute directive
+
+  - Passing data with `@Input()` and responding to lifecycle events.
+  ```html
+  <!-- app.component.html -->
+  <p appTextNinja [textColor]="customTextColor">Passing Data to a directive</p>
+
+  <!-- Add new property to app.component.ts -->
+  customTextColor = 'orange';
+  ```
+
+  ```Typescript
+  import { Input, OnInit } from '@angular/core';
+  ...
+  export class TextNinjaDirective implements OnInit {
+      @Input() textColor: string;
+
+      constructor(private el: ElementRef, private renderer: Renderer2) { }
+
+      ngOnInit(): void {
+        const customColor = this.textColor || '#000';
+        this.renderer.setStyle(this.el.nativeElement, 'color', customColor);
+      }
+  }
+  ```
+
+---
+
+# Pipes
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
   - Content
 ---
 
