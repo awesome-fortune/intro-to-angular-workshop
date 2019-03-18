@@ -1,8 +1,20 @@
-<h1>Custom Typeahead With Comms</h1>
+<h1>Databinding & Component Communication</h1>
 
-<input id="browser-input" #t type="text" list="input-browsers">
+<div>
+  <h3>Data Binding</h3>
+  <p>
+    <span>1 Way Data Binding</span>
+    {{ selectedBrowserName }}
+  </p>
+  <p>
+    <span>2 Way Data Binding</span>
+    {{ browserNameSelection }}
+  </p>
+</div>
+
+<input id="browser-input" type="text" list="input-browsers" [(ngModel)]="browserNameSelection" (change)="selectionChange(browserNameSelection)">
 <datalist id="input-browsers">
-  <option *ngFor="let browser of browserNames" value="{{ browser }}">
+  <option *ngFor="let browser of browserNames" [value]="browser">
 </datalist>
 
-<button (click)="generateRandomWord()">Generate</button>
+<button (click)="sendWordToParent()" [disabled]="selectedBrowserName == null">Send To Parent</button>

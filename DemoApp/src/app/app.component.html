@@ -3,8 +3,9 @@
 
 <hr>
 
-<app-custom-typeahead-with-comms [browserList]="browsers" (onRandomWordChange)="randomWordcallback($event)"></app-custom-typeahead-with-comms>
+<app-custom-typeahead-with-comms [browserList]="browsers" (onWordChange)="wordChangeCallback($event)"></app-custom-typeahead-with-comms>
 
-<p>
-  Random Word: {{ randomWord }}
+<p *ngIf="word != null">
+  <span>Parent Component</span>
+  {{ word }}
 </p>

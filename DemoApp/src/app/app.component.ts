@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   browsers = ['DemoApp', 'Firefox', 'IE', 'Chrome', 'Opera', 'Safari', 'Unknown Browser'];
-  randomWord = 'nothing yet';
-  public randomWordcallback(word: string): void {
-    this.randomWord = word;
+  word = null;
+  public wordChangeCallback(word: string): void {
+    this.word = word;
   }
 }
