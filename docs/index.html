@@ -280,11 +280,11 @@ class: center, middle
 
   <input type="text" list="browsers">
   <datalist id="browsers">
-    <option value="Firefox">
-    <option value="IE">
-    <option value="Chrome">
-    <option value="Opera">
-    <option value="Safari">
+      <option value="Firefox">
+      <option value="IE">
+      <option value="Chrome">
+      <option value="Opera">
+      <option value="Safari">
   </datalist>
   ```
 ---
@@ -348,7 +348,7 @@ class: center, middle
 # Components :: Deep Dive
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  ### Component Lifecycle
+  ### Component Lifecycle Overview
 
   - Component instances have a lifecycle as Angular creates, updates, and destroys them.
   - Developers can tap into key moments in that lifecycle by implementing lifecycle hooks.
@@ -364,16 +364,96 @@ class: center, middle
   <img src="assets/img/hooks.jpg" style="width: 30%; position: absolute; right: 20%; top: 50%">
 ---
 
-# Data Binding
+# Components :: Deep Dive
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  - Content
+  ### Data Binding
+
+  - Coordinate communication between a component class and its view layer.
+  - Types of Data Binding:
+    - Interpolation
+    - Event binding
+    - Property binding
+    - 2-Way data binding
+
+    <img src="assets/img/binding.png" style="position: absolute; right: 10%; top: 40%; width: 50%;">
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DTV Logo">
+
+  ### Data Binding :: Interpolation
+
+  - Used to take expressions and change them into text that can be used within HTML element tags and attributes.
+  - aka 1-Way data binding.
+  - Syntax: `{{ expression }}`
+  - Applied in HTML elements or attributes.
+  - Assuming we have a property called `personName` with the value `'Big Shaq'`
+  ```html
+  <p>Name: {{ personName }}</p>
+
+  <!-- Result -->
+  Name: Big Shaq
+  ```
+  - We can also work with expressions!
+  ```html
+  <p>2 + 2 is {{ 2 + 2 }}, minus 1 that's {{ (2 + 2) - 1 }} quick maths!</p>
+
+  <!-- Result -->
+  2 + 2 is 4, minus 1 that's 3 quick maths!
+  ```
 ---
 
 # Components :: Deep Dive
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  ### Interpolation
+  ### Data Binding :: Event Binding
+
+  - Used to listen for events caused by user actions in a component's view.
+  - Syntax: `(click)="eventHandler()"`
+  ```html
+  <!--HTML-->
+  <button (click)="doSomething()">Do Something</button>
+
+  <!--Typescript-->
+  doSomething(): void {
+      ...
+  }
+  ```
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Data Binding :: Property binding
+
+  - Allows setting HTML attribute values on HTML elements.
+  ```html
+  <input type="submit" [value]="someValue">
+
+  <img [src]="someImageSource" [alt]="someAlt">
+  ```
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Data Binding :: 2-Way Data Binding
+
+  - Used for 2-Way communication between the component's logic and presentation layer.
+  - e.g element in the view can `set` and `retrieve` its value from a component class.
+  - Requires the `ngModel` directive from the `FormsModule` package/type definition.
+  - Syntax: `[(ngModel)]="someVariable"`
+  ```html
+  <!-- HTML -->
+  <input type="text" placeholder="ngModelDemo" [(ngModel)]="demoText">
+  <p>{{ demoText }}</p>
+
+  <!-- Typescript -->
+  export class DemoComponent {
+      demoText: string;
+  }
+  ```
 ---
 
 # Components :: Deep Dive
