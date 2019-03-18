@@ -460,6 +460,84 @@ class: center, middle
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
   ### Communiaction between components
+
+  - Pass data from parent to child with `input` binding.
+  ```Typescript
+  import { Component, Input } from '@angular/core';
+
+  @Component({
+      selector: 'app-child',
+      template: `<p>Text from parent: {{ textFromParent }}</p>`
+  })
+  export class ChildComponent {
+      @Input() textFromParent: string;
+  }
+  ```
+
+  ```TypeScript
+  import { Component } from '@angular/core';
+
+  @Component({
+      selector: 'app-parent',
+      template: `<app-child [textFromParent]="textToChild"></app-child>
+      `
+  })
+  export class ParentComponent {
+      textToChild = 'Take this gift child!';
+  }
+  ```
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Communiaction between components
+
+  - Parent listens for child component events.
+  - Use EventEmitter as an output property in the child component.
+  ```Typescript
+  import { Component, EventEmitter, Output } from '@angular/core';
+
+  @Component({
+      selector: 'app-child',
+      template: `<button (click)="onClick()"></button>`
+  })
+  export class ChildComponent {
+      @Output() buttonClicked = new EventEmitter<number>();
+      buttonClickCount = 0;
+
+      onClick(): void {
+        this.buttonClickCount++;
+        this.buttonClicked.emit(this.buttonClickCount);
+      }
+  }
+  ```
+---
+
+# Components :: Deep Dive
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Communiaction between components
+
+  - Parent listens for child component events.
+
+
+```Typescript
+  import { Component } from '@angular/core'
+
+  @Component({
+    selector: 'app-parent',
+    template: `
+    <p>Total Event Messages: {{ messagesFromChild }}</p>
+    <app-child (buttonClicked)="onUpdate($event)"></app-child>
+    `
+  })
+  export class ParentComponent {
+    messagesFromChild: number;
+
+    onUpdate(data: number) { data = this.messagesFromChild; }
+  }
+  ```
 ---
 
 # Directives

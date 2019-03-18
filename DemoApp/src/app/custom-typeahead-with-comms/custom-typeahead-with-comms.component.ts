@@ -6,15 +6,16 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
   styleUrls: ['./custom-typeahead-with-comms.component.css']
 })
 export class CustomTypeaheadWithCommsComponent {
-  @Input('browserList') browserNames: string[];
-  @Output('onWordChange') wordEventEmitter: EventEmitter<string> = new EventEmitter();
+  @Input() browserNames: string[];
+  @Output() wordFromChild = new EventEmitter<string>();
+
   /**
    * browserNameSelection is used to showcase 2 way data binding with ngModel
    */
   browserNameSelection: string;
   selectedBrowserName: string;
   public sendWordToParent(): void {
-    this.wordEventEmitter.next(this.selectedBrowserName);
+    this.wordFromChild.next(this.selectedBrowserName);
   }
 
   selectionChange(selection) {

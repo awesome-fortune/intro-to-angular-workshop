@@ -3,7 +3,7 @@
 
 <hr>
 
-<app-custom-typeahead-with-comms [browserList]="browsers" (onWordChange)="wordChangeCallback($event)"></app-custom-typeahead-with-comms>
+<app-custom-typeahead-with-comms [browserNames]="browsers" (wordFromChild)="wordChangeCallback($event)"></app-custom-typeahead-with-comms>
 
 <p *ngIf="word != null">
   <span>Parent Component</span>
