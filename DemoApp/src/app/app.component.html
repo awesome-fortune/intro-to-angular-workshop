@@ -1,15 +1,38 @@
+<!-- ============================================= -->
+<!-- Creating a component -->
+<!-- <app-custom-typeahead></app-custom-typeahead> -->
+<!-- ============================================= -->
 
-<app-custom-typeahead></app-custom-typeahead>
+<!-- ============================================= -->
+<!-- Component Communication - parent to child -->
+<!-- <app-custom-typeahead-with-comms [browserNames]="browsers"></app-custom-typeahead-with-comms> -->
+<!-- ============================================= -->
 
-<hr>
+<!-- ============================================= -->
+<!-- Component Communication - child-to-parent -->
+<!-- <app-custom-typeahead-with-comms [browserNames]="browsers" (wordFromChild)="wordChangeCallback($event)"></app-custom-typeahead-with-comms> -->
 
-<app-custom-typeahead-with-comms [browserNames]="browsers" (wordFromChild)="wordChangeCallback($event)"></app-custom-typeahead-with-comms>
-
-<p *ngIf="word != null">
+<!-- <p *ngIf="word != null">
   <span>Parent Component</span>
   {{ word }}
-</p>
+</p> -->
+<!-- ============================================= -->
 
-<p appTextNinja>Some text that needs ninjarism</p>
+<!-- ============================================= -->
+<!-- Directives -->
+<!-- <p appTextNinja>Some text that needs ninjarism</p> -->
 
-<p appTextNinja [textColor]="customTextColor">Passing Data to a directive</p>
+<!-- --------------------------------------------- -->
+
+<!-- <p appTextNinja [textColor]="customTextColor">Passing Data to a directive</p> -->
+<!-- ============================================= -->
+
+<!-- Pipes -->
+
+<p>Today: {{ today }}</p>
+<p>Today: {{ today | date }}</p>
+<p>Today: {{ today | date | lowercase  }}</p>
+<p>Today: {{ today | date:'y-MM-d' }}</p>
+
+<small>Our custom pipe</small>
+<p>Today: {{ today | dayOfWeek }}</p>

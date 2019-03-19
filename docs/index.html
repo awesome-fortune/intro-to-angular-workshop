@@ -352,7 +352,7 @@ class: center, middle
 
   - Component instances have a lifecycle as Angular creates, updates, and destroys them.
   - Developers can tap into key moments in that lifecycle by implementing lifecycle hooks.
-  - Lifeyle hooks:
+  - Lifecycle hooks:
     - `ngOnChanges()`
     - `ngOnInit()`
     - `ngDoCheck()`
@@ -459,7 +459,7 @@ class: center, middle
 # Components :: Deep Dive
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  ### Communiaction between components
+  ### Communication between components
 
   - Pass data from parent to child with `input` binding.
   ```Typescript
@@ -491,7 +491,7 @@ class: center, middle
 # Components :: Deep Dive
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  ### Communiaction between components
+  ### Communication between components
 
   - Parent listens for child component events.
   - Use EventEmitter as an output property in the child component.
@@ -517,7 +517,7 @@ class: center, middle
 # Components :: Deep Dive
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  ### Communiaction between components
+  ### Communication between components
 
   - Parent listens for child component events.
 
@@ -543,7 +543,7 @@ class: center, middle
 # Directives
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  - Used to attatch custom behavior to DOM elements
+  - Used to attach custom behavior to DOM elements
   - Types of directives:
     - *Component* - directive with a template.
     - *Attribute Directive* - change the appearance or behavior of an element, component, or another directive.
@@ -635,43 +635,238 @@ export class TextNinjaDirective {
       }
   }
   ```
+---
 
+# Directives
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Structural directives
+
+  - Meant to alter the structure of the DOM.
+  - e.g Adding, removing or manipulating elements.
+    - Example of built in angular structural directives.
+      - *ngIf - adds or removes elements based on a condition.
+  ```html
+  <div *ngIf="someConditionIsTrue">Just an example.</div>
+  ```
+      - *ngFor - repeatedly adds the DOM element that it's applied to.
+
+  ```html
+  <!-- Items in a collection -->
+  <div *ngFor="let item in collection">Value: {{ item }}</div>
+
+  <!-- Condition -->
+  <div *ngFor="counter < 10">Value: {{ counter }}</div>
+```
 ---
 
 # Pipes
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  - Content
+  - Used to transform a single value into a new value.
+  - `{{ expression | pipe }}`
+  - Angular has a few built in pipes.
+    - Date pipe - formats a date value according to locale rules.
+    - Lowercase pipe - Transforms text to lowercase.
+
+```html
+<p>Today : {{ today }}</p>
+<!-- Today : Tue Mar 19 2019 02:06:31 GMT+0200 (South Africa Standard Time) -->
+
+<p>Today : {{ today | date }}</p>
+<!-- Today : Mar 19, 2019 -->
+
+<p>Today : {{ today | date | lowercase }}</p>
+<!-- Today : mar 19, 2019 -->
+
+<p>Today: {{ today | date:'y-MM-d' }}</p>
+-> Today: 2019-03-19
+```
 ---
 
 # Pipes
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  - Content
+  ### Building a custom Pipe
+  - Example of a simple pipe that returns a day of the week from a given date.
+  - `ng generate pipe pipes/dayOfWeek`
+
+```Typescript
+  import { Pipe, PipeTransform } from '@angular/core';
+
+  @Pipe({
+    name: 'dayOfWeek'
+  })
+  export class DayOfWeekPipe implements PipeTransform {
+
+    transform(value: any, args?: any): any {
+      return null;
+    }
+  }
+```
+---
+
+# Pipes
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Building a custom pipe
+  - Adding logic
+
+```Typescript
+transform(value: Date): any {
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const date =  new Date(value);
+
+  return days[date.getDay()];
+}
+```
+
+- Using the pipe
+
+```html
+<!-- app.component.ts -->
+<p>Today: {{ today | dayOfWeek }}</p>
+
+<!-- Today Tuesday -->
+```
 ---
 
 # Modules
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  - Content
+  - Angular's mechanism for grouping components and other Angular building blocks.
+  - Allow developers to bundle related aspects of an Angular app.
+  - Allow developers to lazy-load parts of an Angular app:
+    - Download only parts of the app when a user visits a certain page.
+  - Built in Angular modules:
+    - FormsModule - for working with forms.
+    - BrowseranimationsModule - for working with animations.
+
+    <img src="assets/img/module.jpg">
+---
+
+# Modules
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### What they look like
+
+  ```Typescript
+  import { FormsModule } from '@angular/forms';
+  import { BrowserModule } from '@angular/platform-browser';
+  import { NgModule } from '@angular/core';
+  import { AppComponent } from './app.component';
+
+
+  @NgModule({
+    declarations: [
+      AppComponent,
+    ],
+    imports: [
+      BrowserModule,
+      FormsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+  })
+  export class AppModule { }
+
+  ```
+---
+
+# Modules
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  ### Anatomy
+
+  - Modules are decorated by @NgModule
+  - Creating a module `ng generate module ModuleName`
+  - Options:
+    - declarations:
+      - Components, directives and pipes that belong to the module.
+    - imports:
+      - External modules or other things that the module needs to use.
+    - providers:
+      - Shared services that should be accessible by every declaration in the module.
+    - exports:
+      - Components, directives and pipes that the module allows external modules to have access to.
 ---
 
 # Services
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  - Content
+  - Centralize and separate business logic from the view.
+  - Typically consumed through dependency injection.
+  - Created as singletons.
+  - Generate a service `ng new service serviceName`
+
+  ```Typescript
+  import { Injectable } from '@angular/core';
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class ExampleService {
+
+      constructor() { }
+
+      logToConsole(): void {
+          const data = {
+            'key': 'value'
+          };
+
+          console.table(data);
+      }
+  }
+
+  ```
+---
+
+# Services
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  - Using the Example service
+
+  ```TypeScript
+  <!-- app.component.ts -->
+  import { ExampleService } from './services/example.service';
+  ...
+  @Component({
+    ...
+  })
+  export class AppComponent {
+      ...
+      constructor(private es: ExampleService) {
+          this.es.logToConsole();
+      }
+      ...
+  }
+  ```
+
+  <img src="assets/img/console-table.PNG">
 ---
 
 # Dependency Injection
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  - Content
+  - Angular has its own DI framework
+  - Allows developers to easily distribute services across an Angular application.
+  - Prevents hard-wiring dependencies.
+    - Dependencies are services or objects that a class needs to perform a function
+  - Inject the desired services in a component's constructor instead of creating a new instance.
+
+  <img src="assets/img/dependency-injection.png" style="position: absolute; left: 35%;">
 ---
 
-# Lab Time
+# Dependency Injection
   <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
 
-  <h1 style="position: absolute; top: 45%; left: 25%;">Real World-ish application!</h1>
+  <img src="assets/img/dependency_drake.png" style="width: 80%">
+---
+
+# ...
+  <img class="dvt-logo" src="assets/img/dvt-logo.png" alt="DVT Logo">
+
+  <h1 style="text-align: center;">End!</h1>
 ---
   </textarea>
   <script src="https://remarkjs.com/downloads/remark-latest.min.js">
